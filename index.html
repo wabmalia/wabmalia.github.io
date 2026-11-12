@@ -1,5 +1,194 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<title>Redirecting to https://wabmalia.github.io/home</title>
-<meta http-equiv="refresh" content="0; URL=https://wabmalia.github.io/home">
-<link rel="canonical" href="https://wabmalia.github.io/home">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1113" />
+  <meta name="description" content="Wilson Mália, senior software engineer. Full stack, from FPGAs and industrial automation to React, Node.js and cloud services." />
+  <title>Wilson Mália · Senior Software Engineer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main>
+
+  <header class="hero">
+    <div class="avatar" aria-hidden="true">WM</div>
+    <div class="hero-text">
+      <h1>Wilson Mália</h1>
+      <p class="role">Senior Software Engineer <span class="place">· Lisbon, Portugal</span></p>
+      <p class="lede">Full stack engineer with an electronics and telecom background. I've gone from FPGAs and
+        industrial automation to network management software, React front ends and, today, payment systems at scale.</p>
+      <nav class="links" aria-label="Contact">
+        <a class="chip" href="https://linkedin.com/in/wabmalia">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></svg>
+          LinkedIn</a>
+        <a class="chip" href="https://github.com/wabmalia">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          GitHub</a>
+        <!-- TODO: add an email link here if you want one on the public page, e.g. <a class="chip" href="mailto:...">Email</a> -->
+      </nav>
+    </div>
+  </header>
+
+  <section class="facts card">
+    <dl>
+      <div><dt>Now</dt><dd>Senior Software Engineer at NewStore, on the payments team</dd></div>
+      <div><dt>Stack</dt><dd>
+        <ul class="tags">
+          <li>Go</li><li>Python</li><li>TypeScript</li><li>React</li><li>Node.js</li><li>Elixir</li><li>PostgreSQL</li><li>AWS</li><li>Kubernetes</li><li>Kotlin</li><li>Java</li>
+        </ul>
+      </dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <ol class="timeline">
+      <li class="job">
+        <div class="job-head">
+          <h3>Senior Software Engineer <span class="at">NewStore</span></h3>
+          <span class="when">Mar 2024 – Present</span>
+        </div>
+        <ul class="tags small"><li>Go</li><li>Python</li><li>Elixir</li><li>Stripe</li><li>PostgreSQL</li><li>RabbitMQ</li><li>SQS</li><li>Kubernetes</li><li>Terraform</li></ul>
+        <ul class="points">
+          <li>Payments team on an omnichannel retail platform that brands use to sell in their stores and online.</li>
+          <li>A core engineer on the Stripe integration behind NewStore Payments, the platform's built-in payments
+            offering: connected accounts for each retailer, in-store card readers and the payment flows that tie them
+            to orders.</li>
+          <li>Work across a distributed system of about 20 services in Go, Python and Elixir, talking over gRPC,
+            RabbitMQ and SQS/SNS, with PostgreSQL and DynamoDB underneath, running on Kubernetes in AWS.</li>
+          <li>The payments services handle tens of millions of requests a week, with peaks above 100 per second,
+            across AWS regions in the US and Europe.</li>
+          <li>Own what we ship in production: infrastructure as code with Terraform, observability with OpenTelemetry, Prometheus and Dash0, and
+            investigating payment issues reported by retailers from support ticket to fix.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head">
+          <h3>Software Engineer <span class="at">Volkswagen Digital Solutions (SDC:LX)</span></h3>
+          <span class="when">Feb 2019 – Feb 2024</span>
+        </div>
+        <ul class="tags small"><li>React</li><li>TypeScript</li><li>Node.js</li><li>AWS</li><li>Kotlin</li><li>Elixir</li><li>Clojure</li><li>Go</li></ul>
+        <ul class="points">
+          <li>Full stack developer on products that streamline Volkswagen's internal processes and improve the dealer experience,
+            starting from what people inside Volkswagen actually needed.</li>
+          <li>Worked the XP way: pair programming, TDD and user-centric development.</li>
+          <li>Advocated for React and introduced better testing strategies across teams.</li>
+          <li>Worked with multiple teams to improve culture and promote engineering best practices.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head">
+          <h3>Software Engineer <span class="at">Infinera (formerly Coriant)</span></h3>
+          <span class="when">Jul 2013 – Feb 2019</span>
+        </div>
+        <p class="via">Coriant was acquired by Infinera in Oct 2018. Jul 2013 – Apr 2016 through Upgrade M (now Multipessoal).</p>
+        <ul class="tags small"><li>Java EE</li><li>Maven</li><li>Jenkins</li><li>Docker</li><li>Atlassian</li></ul>
+        <ul class="points">
+          <li>Built features for a network management system that ran the network traffic of entire regions and countries.</li>
+          <li>Backend developer on the external interfaces team, focused on the SNMP interface.</li>
+          <li>Wrote libraries that made tests easier to write and features faster to debug and prototype, and won an
+            internal award for a framework that made QA testers' work easier.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head">
+          <h3>System Engineer <span class="at">VEET</span></h3>
+          <span class="when">Feb 2012 – Feb 2013</span>
+        </div>
+        <ul class="tags small"><li>Java</li></ul>
+        <ul class="points">
+          <li>Built the system that automates biofuel production, end to end: from the user interface down to the
+            controllers driving the motors, valves and sensors.</li>
+          <li>Spent two weeks in Ireland installing the electrical instruments and actuators to automate a biofuel plant.</li>
+        </ul>
+      </li>
+      <li class="job">
+        <div class="job-head">
+          <h3>System Engineer <span class="at">Primetec</span></h3>
+          <span class="when">Oct 2010 – Jan 2012</span>
+        </div>
+        <ul class="tags small"><li>C</li></ul>
+        <ul class="points">
+          <li>Developed a home automation solution for one of the major Portuguese companies in the field.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Side projects</h2>
+    <div class="grid projects">
+      <a class="card project" href="https://wabmalia.github.io/ev-charger/about.html">
+        <h3>EV Charger</h3>
+        <p>Installable web app to log electric car charges, with cost and consumption stats and two-way Google Sheets sync. Works offline.</p>
+        <ul class="tags small"><li>Preact</li><li>TypeScript</li><li>PWA</li></ul>
+      </a>
+      <a class="card project" href="https://wabmalia.github.io/arcade/">
+        <h3>Arcade</h3>
+        <p>A home for my browser games, including turn-based multiplayer mini golf over WebRTC.</p>
+        <ul class="tags small"><li>Phaser</li><li>TypeScript</li><li>WebRTC</li></ul>
+      </a>
+      <a class="card project" href="https://wabmalia.github.io/ink-kick/">
+        <h3>Ink Kick</h3>
+        <p>Floodlit 3D arcade football, drawn in ink and watercolour.</p>
+        <ul class="tags small"><li>Three.js</li><li>TypeScript</li><li>WebRTC</li></ul>
+      </a>
+    </div>
+    <p class="more"><a href="https://github.com/wabmalia?tab=repositories">More on GitHub →</a></p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Master's, Electronics and Telecommunication Engineering</h3>
+        <p class="muted">ISEL, Instituto Superior de Engenharia de Lisboa · <span class="nowrap">2009 – 2014</span></p>
+        <p>Thesis: <em>Many-Core Approach to 2D-DCT Calculation Using an FPGA</em>.</p>
+        <ul class="tags small"><li>VHDL</li><li>C/C++</li><li>FPGA</li></ul>
+      </div>
+      <div class="card">
+        <h3>BSc, Electronics, Telecommunication and Computer Engineering</h3>
+        <p class="muted">ISEL, Instituto Superior de Engenharia de Lisboa · <span class="nowrap">2006 – 2009</span></p>
+        <p>Final project: temperature and humidity data logger with an LCD, using decimation and interpolation for a more accurate plot.</p>
+        <ul class="tags small"><li>C</li><li>PIC32</li></ul>
+      </div>
+      <div class="card">
+        <h3>Game Design</h3>
+        <p class="muted">World Academy Portugal · <span class="nowrap">2015 – 2016</span></p>
+        <p>Intensive course on game programming, design and animation with Unity3D, Construct 3 and Maya.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Workshops</h2>
+    <ul class="list card">
+      <li><strong>React Summit 2020 · Test React Applications</strong>
+        <span>Full day with Kent C. Dodds. I was already a Testing Library fan; this went much deeper.</span></li>
+      <li><strong>React Summit 2020 · React Advanced</strong>
+        <span>Advanced React patterns, mainly custom hooks and best practices.</span></li>
+      <li><strong>React Summit 2020 · CSS-in-JS from "why" to "how"</strong>
+        <span>Full day on CSS-in-JS, focused on Emotion.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>About me</h2>
+    <div class="grid">
+      <div class="card"><h3>At work I'm best at</h3><p>Leading by example and giving it my all.</p></div>
+      <div class="card"><h3>I like working with people who</h3><p>Are willing to learn and not afraid to fail.</p></div>
+      <div class="card"><h3>Outside work</h3><p>Competitive sports, mostly team ones like football. Video games, photography and reading. Walking and cycling in the city or in nature.
+        Travelling and meeting new people: more than 15 countries so far.</p></div>
+      <div class="card"><h3>Languages</h3><p>Portuguese (native) · English (fluent)</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://github.com/wabmalia">GitHub</a> · <a href="https://linkedin.com/in/wabmalia">LinkedIn</a>
+    <button class="print" onclick="print()">Save as PDF</button>
+  </footer>
+</main>
+</body>
+</html>
