@@ -140,23 +140,84 @@ footer {
 }
 
 @media print {
+  /* Paper gets its own layout: a classic two-page resume, no boxes, no colour fills. */
+  @page { size: A4; margin: 14mm 16mm 14mm; }
   :root {
-    --bg: #fff; --surface: #fff; --surface-2: #fff; --border: #d4d7db;
-    --text: #111; --text-2: #555; --accent: #8a6400; --accent-soft: #f5efe0; --accent-soft-ink: #5c4300;
+    --bg: #fff; --surface: #fff; --border: #c9ccd1;
+    --text: #15171a; --text-2: #5a6068; --accent: #7a5800;
     color-scheme: light;
   }
-  body { font-size: 12.5px; }
-  main { max-width: none; padding: 0 0 0 10px; }
-  h2 { margin: 22px 0 8px; font-size: 16px; }
-  .avatar { background: #111; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .tags li { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .card, .job { break-inside: avoid; }
-  .chip { border: 0; padding: 0 12px 0 0; }
-  .project h3::after, .print, .todo { display: none; }
-  a { text-decoration: none; }
+  body { font-size: 9.6pt; line-height: 1.42; }
+  main { max-width: none; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  .print, .todo, footer, .more, .links, .avatar, .facts dl > div:first-child { display: none; }
+  .print-only { display: block !important; }
+
+  /* Header */
+  .hero { display: block; }
+  h1 { font-size: 22pt; letter-spacing: -0.3px; }
+  .role { margin-top: 2px; font-size: 11pt; }
+  .lede { margin-top: 6px; max-width: none; font-size: 9.6pt; }
+  .contact { margin-top: 6px; color: var(--text-2); font-size: 9pt; }
+  .contact span + span::before { content: '  ·  '; }
+
+  /* Stack line */
+  .facts { margin-top: 8px; border: 0; padding: 0; border-radius: 0; }
+  .facts dl > div { display: block; }
+  .facts dt { display: inline; font-size: inherit; color: var(--text); font-weight: 700; }
+  .facts dt::after { content: ': '; }
+  .facts dl, .facts dl > div { display: block; }
+  .facts dd, .facts dd > ul { display: inline !important; }
+
+  /* Tags become plain comma lists */
+  .tags, .tags.small { display: inline; }
+  .tags li, .tags.small li {
+    display: inline; background: none; padding: 0; border-radius: 0;
+    color: var(--text-2); font-size: inherit; font-weight: 400;
+  }
+  .tags li + li::before { content: ', '; }
+  .job .tags { display: block; margin-top: 1px; font-size: 8.8pt; }
+  .card .tags { display: block; margin-top: 2px; font-size: 8.8pt; }
+
+  /* Section headings with a rule */
+  h2 {
+    margin: 14px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--border);
+    font-size: 10pt; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent);
+    break-after: avoid;
+  }
+  h3 { font-size: 10pt; }
+
+  /* Experience: no line or dots */
+  .timeline { padding: 0; border: 0; }
+  .job { padding: 0 0 9px; break-inside: avoid; }
+  .job::before { display: none; }
+  .job-head { flex-wrap: nowrap; }
+  .when { font-size: 9pt; white-space: nowrap; }
+  .via { font-size: 8.8pt; }
+  .points { margin-top: 3px; padding-left: 14px; }
+  .points li { margin: 1px 0; }
+
+  /* Cards become compact blocks in two columns */
+  .grid { grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+  .card { border: 0; border-radius: 0; padding: 0; break-inside: avoid; }
+  .card p { margin-top: 1px; }
+  .card p.muted { font-size: 8.8pt; }
+  .project h3 { color: var(--text); }
+  .project h3::after { content: none; }
+  .project .url { display: inline !important; margin-left: 8px; color: var(--text-2); font-weight: 400; font-size: 8.8pt; }
+  .projects { break-inside: avoid; }
+  section:has(.projects) { break-inside: avoid; }
+  .project p { margin-bottom: 0; }
+  .projects { grid-template-columns: 1fr; gap: 4px; }
+  .projects .tags { display: none; }
+
+  .list { padding: 0; border: 0; }
+  .list li { padding: 2px 0; border: 0; display: block; }
+  .list span::before { content: ' · '; }
 }
 .place { color: var(--text-2); font-weight: 500; }
 .nowrap { white-space: nowrap; }
 /* Comfortable tap targets for text links on touch screens */
 .more a, footer a { display: inline-block; padding: 10px 0; }
 .card .tags { margin-top: 12px; }
+.print-only { display: none; }
