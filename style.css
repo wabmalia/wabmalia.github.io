@@ -132,8 +132,20 @@ footer {
 }
 
 @media (max-width: 520px) {
-  .hero { flex-direction: column; gap: 14px; }
-  .avatar { width: 60px; height: 60px; border-radius: 18px; font-size: 22px; }
+  /* Name, title and place sit beside the avatar; the intro and links run full width below. */
+  .hero {
+    display: grid; grid-template-columns: auto 1fr; gap: 0 14px;
+    grid-template-areas: "avatar name" "avatar role" "lede lede" "links links";
+    align-items: center;
+  }
+  .hero-text { display: contents; }
+  .avatar { grid-area: avatar; width: 64px; height: 64px; border-radius: 18px; font-size: 22px; }
+  .hero h1 { grid-area: name; align-self: end; font-size: 28px; }
+  .role { grid-area: role; align-self: start; margin-top: 4px; font-size: 15px; }
+  .place { display: block; font-size: 14px; }
+  .place .sep { display: none; }
+  .lede { grid-area: lede; margin-top: 16px; }
+  .links { grid-area: links; }
   .facts dl > div { grid-template-columns: 1fr; gap: 4px; }
   .print { margin-left: 0; }
 }
