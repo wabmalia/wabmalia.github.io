@@ -81,12 +81,14 @@ h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.05; letter-spacing: -0.5p
 .tags.small li { font-size: 12px; padding: 2px 9px; }
 
 /* Experience timeline */
-.timeline { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--border); }
+.timeline { position: relative; list-style: none; margin: 0; padding: 0 0 0 24px; }
+/* The line starts at the centre of the first dot, so nothing pokes out above it. */
+.timeline::before { content: ''; position: absolute; left: 0; top: 12px; bottom: 0; width: 2px; background: var(--border); }
 .job { position: relative; padding: 0 0 26px; }
 .job:last-child { padding-bottom: 0; }
 .job::before {
   content: ''; position: absolute; left: -30px; top: 5px;
-  width: 14px; height: 14px; border-radius: 50%;
+  box-sizing: border-box; width: 14px; height: 14px; border-radius: 50%;
   background: var(--bg); border: 2px solid var(--border);
 }
 .job:first-child::before { background: var(--accent); border-color: var(--accent); }
@@ -203,6 +205,7 @@ footer {
 
   /* Experience: no line or dots */
   .timeline { padding: 0; border: 0; }
+  .timeline::before { display: none; }
   .job { padding: 0 0 9px; break-inside: avoid; }
   .job::before { display: none; }
   .job-head { flex-wrap: nowrap; }
@@ -261,6 +264,7 @@ footer {
 .earlier[open] .preview { display: none; }
 .earlier > summary:hover .more-label, .earlier > summary:focus-visible .more-label { text-decoration: underline; }
 .earlier > .timeline { padding-top: 18px; }
+.earlier > .timeline::before { top: 0; }
 .earlier > .timeline .job:first-child::before { background: var(--bg); border-color: var(--border); }
 @media print {
   .earlier > summary { display: none; }
