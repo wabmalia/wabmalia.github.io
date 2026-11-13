@@ -32,7 +32,7 @@ main {
 }
 a { color: var(--accent); }
 h1, h2, h3, p { margin: 0; }
-h2 { font-size: 20px; margin: 44px 0 14px; }
+h2 { font-size: 20px; margin: 24px 0 14px; }
 h3 { font-size: 16px; line-height: 1.35; }
 .muted { color: var(--text-2); }
 
@@ -66,9 +66,9 @@ h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.05; letter-spacing: -0.5p
 .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 /* Quick facts */
-.facts { margin-top: 28px; }
-.facts dl { margin: 0; display: grid; gap: 14px; }
-.facts dl > div { display: grid; grid-template-columns: 150px 1fr; gap: 12px; align-items: baseline; }
+.facts { margin-top: 20px; }
+.facts dl { margin: 0; }
+.facts dl > div { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
 .facts dt { color: var(--text-2); font-size: 14px; }
 .facts dd { margin: 0; }
 
@@ -146,7 +146,6 @@ footer {
   .place .sep { display: none; }
   .lede { grid-area: lede; margin-top: 16px; }
   .links { grid-area: links; }
-  .facts dl > div { grid-template-columns: 1fr; gap: 4px; }
   .print { margin-left: 0; }
 }
 
