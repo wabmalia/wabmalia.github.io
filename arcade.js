@@ -347,13 +347,15 @@
   setupStick();
   setupButtons();
 
-  // Safari can still zoom on a double tap despite touch-action, so swallow
-  // the second tap.
+  // No zooming on a double tap. The viewport says the page can't scale and
+  // CSS asks for touch-action: manipulation, but Safari can still zoom, so
+  // swallow a second tap close behind the first, and the dblclick it makes.
   let lastTap = 0;
   document.addEventListener('touchend', e => {
     if (e.timeStamp - lastTap < 350) e.preventDefault();
     lastTap = e.timeStamp;
   }, { passive: false });
+  document.addEventListener('dblclick', e => e.preventDefault(), { passive: false });
 
   window.addEventListener('resize', () => frame(shot));
 
