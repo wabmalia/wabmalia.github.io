@@ -356,6 +356,9 @@
     lastTap = e.timeStamp;
   }, { passive: false });
   document.addEventListener('dblclick', e => e.preventDefault(), { passive: false });
+  // No text selection or copy menu, should iOS start one despite
+  // user-select: none (it can, on a long press).
+  document.addEventListener('selectstart', e => e.preventDefault());
 
   window.addEventListener('resize', () => frame(shot));
 

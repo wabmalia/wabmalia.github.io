@@ -21,6 +21,11 @@
 
 html, body {
   margin: 0;
+  /* A game, not a page: no text selection or copy menu from a long press,
+   a drag or a double tap (nothing here takes text). */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
   height: 100%;
   overflow: hidden;
   background: var(--night);
