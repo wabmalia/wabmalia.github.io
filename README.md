@@ -33,6 +33,19 @@ rerun the script, and copy the `og:`/`twitter:` meta block from another game's `
 pointing at `https://arcade.wabmalia.eu/previews/<repo>.png?v=1`. Bump `?v=` after changing an
 image so the apps fetch it again.
 
+## Installing as an app (PWA)
+
+The arcade installs as one app (`manifest.webmanifest`, scope `/`), and because the games live
+under the same domain they open inside it: no browser bar, no separate installs. `sw.js` is
+registered at the root, so it controls the game pages too. For now it only catches page loads
+that fail offline and shows `offline.html`; everything else goes to the network untouched.
+
+- **Games must not register their own service worker or manifest.** A worker at `/<repo>/`
+  would take that path over from the arcade's.
+- Icons are `icons/`, rendered from `icon.svg` by `python3 _src/build-icons.py` (needs Google
+  Chrome). Rerun it after changing `icon.svg`.
+- Changing `offline.html`: bump `CACHE` in `sw.js` so installed apps fetch the new one.
+
 ## Controls
 
 Hover or tap a thumbnail to select it, click or tap it again to start. The
