@@ -1,7 +1,8 @@
 <!doctype html>
 <!--
-  Turnstile tokens for the store apps (iOS/Android), whose pages live at
-  capacitor://localhost and can't run Turnstile themselves: it only works on
+  Turnstile tokens for the store apps, whose pages live at
+  capacitor://localhost (iOS) and https://localhost (Android) and can't run
+  Turnstile themselves: it only works on
   this site. The games load this page in a small iframe (courier's relay,
   `tokenPage`), ask for a token, and send it to the turn-relay Worker, which
   checks it was solved here.
@@ -25,7 +26,7 @@
   <script>
     (() => {
       const SITEKEY = '0x4AAAAAAFrTw_Fxf9TFG5GL';
-      const APP_ORIGINS = ['capacitor://localhost'];
+      const APP_ORIGINS = ['capacitor://localhost', 'https://localhost']; // iOS, Android
       if (window.parent === window) return; // only useful framed
       let asker = null; // { source, origin } of the pending request
       let widget = null;
