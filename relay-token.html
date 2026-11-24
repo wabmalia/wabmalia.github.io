@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  Turnstile tokens for the store apps (iOS/Android), whose pages live at
+  capacitor://localhost and can't run Turnstile themselves: it only works on
+  this site. The games load this page in a small iframe (courier's relay,
+  `tokenPage`), ask for a token, and send it to the turn-relay Worker, which
+  checks it was solved here.
+
+  Messages, all { relay: ... }: 'ready' once loaded; the game asks with
+  'token'; the answer is 'token' (with the token) or 'error' (with why), and
+  'show' / 'hide' around Cloudflare asking the player to tick the box.
+  Only the apps' origins get answers. Not part of the app build.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Relay check</title>
+  <style>
+    html, body { margin: 0; background: transparent; color-scheme: dark; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    (() => {
+      const SITEKEY = '0x4AAAAAAFrTw_Fxf9TFG5GL';
+      const APP_ORIGINS = ['capacitor://localhost'];
+      if (window.parent === window) return; // only useful framed
+      let asker = null; // { source, origin } of the pending request
+      let widget = null;
+
+      const tell = msg => asker && asker.source.postMessage(msg, asker.origin);
+      const answer = msg => { tell(msg); asker = null; };
+
+      function ask() {
+        if (widget !== null) { turnstile.reset(widget); return; }
+        widget = turnstile.render('#box', {
+          sitekey: SITEKEY,
+          appearance: 'interaction-only',
+          theme: 'dark',
+          callback: token => answer({ relay: 'token', token }),
+          'error-callback': code => { answer({ relay: 'error', why: `(error ${code})` }); return true; },
+          'expired-callback': () => answer({ relay: 'error', why: '(expired)' }),
+          'timeout-callback': () => answer({ relay: 'error', why: '(timed out waiting for the visitor)' }),
+          'before-interactive-callback': () => tell({ relay: 'show' }),
+          'after-interactive-callback': () => tell({ relay: 'hide' }),
+        });
+      }
+
+      let loaded = null;
+      window.addEventListener('message', e => {
+        if (!APP_ORIGINS.includes(e.origin) || e.source !== window.parent) return;
+        if (e.data && e.data.relay === 'token') {
+          asker = { source: e.source, origin: e.origin };
+          loaded.then(ask, () => answer({ relay: 'error', why: '(turnstile failed to load)' }));
+        }
+      });
+
+      loaded = new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        s.onload = () => (window.turnstile ? resolve() : reject());
+        s.onerror = reject;
+        document.head.append(s);
+      });
+      // Ready to be asked (the parent can't know otherwise, being elsewhere).
+      for (const origin of APP_ORIGINS) window.parent.postMessage({ relay: 'ready' }, origin);
+    })();
+  </script>
+</body>
+</html>
